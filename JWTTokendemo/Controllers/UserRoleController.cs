@@ -15,12 +15,19 @@ namespace JWTTokendemo.Controllers
             _context = context;
 
         }
-        [HttpPost("UserRole")]
+        [HttpPost("AddUserRole")]
         public IActionResult AddUserRole(UserRole userRole)
         {
             _context.UserRoles.Add(userRole);
             _context.SaveChanges();
             return Ok("Added User Role succesfully!");
+        }
+        [HttpPut("UpdateUserRole")]
+        public IActionResult UpdateUserRole(UserRole userRole)
+        {
+            _context.UserRoles.Update(userRole);
+            _context.SaveChanges();
+            return Ok("Updated User Role succesfully!");
         }
     }
 }
