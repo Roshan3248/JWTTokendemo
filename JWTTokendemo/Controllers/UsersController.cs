@@ -63,9 +63,6 @@ namespace JWTTokendemo.Controllers
                 expires: DateTime.Now.AddHours(Convert.ToDouble(_configuration["Jwt:ExpiresInHours"])),
                 signingCredentials: creds
             );
-
-            //JWTToken
-
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return Ok(new { token = jwt, user = userData, role = role, success = "200" });
         }
