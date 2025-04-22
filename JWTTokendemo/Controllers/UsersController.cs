@@ -52,7 +52,7 @@ namespace JWTTokendemo.Controllers
 
             var role = _context.Roles.Find(userRole.RoleId).Name;
 
-            // Load JWT settings from appsettings.json
+            
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -63,6 +63,8 @@ namespace JWTTokendemo.Controllers
                 expires: DateTime.Now.AddHours(Convert.ToDouble(_configuration["Jwt:ExpiresInHours"])),
                 signingCredentials: creds
             );
+
+            //JWTToken
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return Ok(new { token = jwt, user = userData, role = role, success = "200" });

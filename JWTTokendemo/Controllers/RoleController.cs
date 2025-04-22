@@ -18,9 +18,18 @@ namespace JWTTokendemo.Controllers
         [HttpPost]
         public IActionResult AddRole(Role role)
         {
-            _context.Roles.Add(role);
-            _context.SaveChanges();
-            return Ok("Add Role succesfully!");
+            try
+            {
+                _context.Roles.Add(role);
+                _context.SaveChanges();
+                return Ok("Add Role succesfully!");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
     }
