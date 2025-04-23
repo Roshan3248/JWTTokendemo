@@ -18,8 +18,7 @@ namespace JWTTokendemo.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserRole>()
-              .HasKey(ur => new { ur.UserId, ur.RoleId });
+           
 
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, Name = "Admin" },

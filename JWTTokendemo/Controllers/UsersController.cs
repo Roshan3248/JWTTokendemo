@@ -66,5 +66,13 @@ namespace JWTTokendemo.Controllers
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return Ok(new { token = jwt, user = userData, role = role, success = "200" });
         }
+
+        [HttpGet("GetAllEmail")]
+        public IActionResult GetAll()
+        {
+            var users = _context.Users.Select(u => new {u.Id,u.Email}).ToList();
+            return Ok(users);
+        }
+
     }
 }

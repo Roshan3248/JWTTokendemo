@@ -15,6 +15,7 @@ namespace JWTTokendemo.Controllers
             _context = context;
             
         }
+
         [HttpPost]
         public IActionResult AddRole(Role role)
         {
@@ -30,6 +31,21 @@ namespace JWTTokendemo.Controllers
                 throw;
             }
             
+        }
+
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                return Ok(_context.Roles.ToList());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
     }
