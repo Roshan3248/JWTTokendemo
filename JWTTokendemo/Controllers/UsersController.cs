@@ -67,10 +67,19 @@ namespace JWTTokendemo.Controllers
             return Ok(new { token = jwt, user = userData, role = role, success = "200" });
         }
 
-        [HttpGet("GetAllEmail")]
+        [HttpGet("GetAllUsers")]
         public IActionResult GetAll()
         {
-            var users = _context.Users.Select(u => new {u.Id,u.Email}).ToList();
+            var users = _context.Users.Select(u => new {u.Id,u.Email,u.Firstname}).ToList();
+            //var users = _context.Users.ToList();
+            //List<UserDdlResponse> response = new List<UserDdlResponse>();
+            //foreach (var user in users)
+            //{
+            //    UserDdlResponse userDdl = new UserDdlResponse();
+            //    userDdl.Id = user.Id;
+            //    userDdl.Email = user.Email;
+            //    response.Add(userDdl);
+            //}
             return Ok(users);
         }
 

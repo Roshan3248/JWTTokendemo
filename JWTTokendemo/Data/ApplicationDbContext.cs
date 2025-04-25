@@ -13,6 +13,8 @@ namespace JWTTokendemo.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<TaskManager> TaskManagers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +38,13 @@ namespace JWTTokendemo.Data
                 new UserRole { Id = 1, UserId = 1, RoleId = 1 },
                 new UserRole { Id = 2, UserId = 2, RoleId = 2 },
                 new UserRole { Id = 3, UserId = 3, RoleId = 3 });
+
+            modelBuilder.Entity<Status>().HasData(
+                new Status { Id = 1, StatusName = "To Do" },
+                new Status { Id = 2, StatusName = "In Progress" },
+                new Status { Id = 3, StatusName = "Testing" },
+                new Status { Id = 4, StatusName = "Done" }
+            );
         }
     }
 }

@@ -3,6 +3,7 @@ using JWTTokendemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JWTTokendemo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250424072558_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,10 +140,6 @@ namespace JWTTokendemo.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("UserId");
-
                     b.ToTable("TaskManagers");
                 });
 
@@ -250,25 +249,6 @@ namespace JWTTokendemo.Migrations
                             RoleId = 3,
                             UserId = 3
                         });
-                });
-
-            modelBuilder.Entity("JWTTokendemo.Data.Entities.TaskManager", b =>
-                {
-                    b.HasOne("JWTTokendemo.Data.Entities.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JWTTokendemo.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Status");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
