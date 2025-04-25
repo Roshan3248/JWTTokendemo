@@ -6,8 +6,7 @@ namespace JWTTokendemo.Data.Entities
     {
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "Role name is required.")]
+          public string Name { get; set; }
     }
 }

@@ -9,23 +9,20 @@ namespace JWTTokendemo.Data.Entities
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(20)]
-        [Required]
+        [Required(ErrorMessage = "Email is required.")]
+       [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
 
-        [Required]
-        [MaxLength(50)]
+        [Required(ErrorMessage = "First name is required.")]
         public string Firstname { get; set; }
-        [MaxLength(20)]
-        public string? Lastname { get; set; }
+        public string  Lastname { get; set; }
 
-        [MaxLength(20)]
-        [Required]
-        public string Password { get; set; }
+        [Required(ErrorMessage = "Password is required.")]
+         public string Password { get; set; }
 
-        [MaxLength(20)]
-        [Required]
+        [Required(ErrorMessage = "Mobile number is required.")]
+        [MaxLength(10, ErrorMessage = "Mobile number can't exceed 20 characters.")]
+        [Phone(ErrorMessage = "Invalid phone number format.")]
         public string Mobile { get; set; }
-
     }
 }
