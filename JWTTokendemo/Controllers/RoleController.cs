@@ -31,6 +31,22 @@ namespace JWTTokendemo.Controllers
             
         }
 
+        [HttpPut("UpdateRole")]
+        public IActionResult UpdateRole(Role role)
+        {
+            try
+            {
+                _context.Roles.Update(role);
+                _context.SaveChanges();
+                return Ok("Updated Role succesfully!");
+            }
+            catch (Exception)
+            {
+                return Ok("Error while updating role");
+            }
+
+        }
+
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
