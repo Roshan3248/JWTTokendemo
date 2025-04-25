@@ -1,6 +1,5 @@
 ﻿using JWTTokendemo.Data;
 using JWTTokendemo.Data.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTTokendemo.Controllers
@@ -27,8 +26,7 @@ namespace JWTTokendemo.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                return Ok("Error while add role");
             }
             
         }
