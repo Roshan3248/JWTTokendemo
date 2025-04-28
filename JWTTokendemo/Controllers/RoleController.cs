@@ -46,6 +46,22 @@ namespace JWTTokendemo.Controllers
             }
 
         }
+        [HttpPut("DeleteRole")]
+        public IActionResult DeleteRole(int id)
+        {
+            try
+            {
+                var role = _context.Roles.Find(id);
+                _context.Roles.Remove(role);
+                _context.SaveChanges();
+                return Ok("Deleted Role succesfully!");
+            }
+            catch (Exception)
+            {
+                return Ok("Error while Deleting role");
+            }
+
+        }
 
         [HttpGet("GetAll")]
         public IActionResult GetAll()
