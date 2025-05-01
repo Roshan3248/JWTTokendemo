@@ -14,6 +14,10 @@ namespace JWTTokendemo.Data
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<State>States  { get; set; }
+        public DbSet<District> Districts { get; set; }
+        public DbSet<UserDetail> UserDetails { get; set; }
+
         public DbSet<TaskManager> TaskManagers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

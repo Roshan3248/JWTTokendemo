@@ -22,7 +22,7 @@ namespace JWTTokendemo.Data.Entities
 
         [Required(ErrorMessage = "Mobile number is required.")]
         [MaxLength(10, ErrorMessage = "Mobile number can't exceed 20 characters.")]
-        [Phone(ErrorMessage = "Invalid phone number format.")]
+        [Phone(ErrorMessage = "Invalid Mobile number format.")]
         public string Mobile { get; set; }
     }
 }
