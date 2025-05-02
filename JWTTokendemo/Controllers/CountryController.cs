@@ -1,8 +1,7 @@
-﻿using JWTTokendemo.Data.Entities;
-using JWTTokendemo.Data;
-using Microsoft.AspNetCore.Http;
+﻿using JWTTokendemo.Data;
+using JWTTokendemo.Data.Entities;
+using JWTTokendemo.Data.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 
 namespace JWTTokendemo.Controllers
 {
@@ -11,51 +10,38 @@ namespace JWTTokendemo.Controllers
     [ApiController]
     public class CountryController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public CountryController(ApplicationDbContext context)
+
+        private readonly ICountry _country;
+
+        public CountryController(ICountry country) 
         {
-            _context = context;
+            _country = country;
         }
 
         [HttpPost("AddCountry")]
         public IActionResult AddCountry(Country country)
         {
-            _context.Countries.Add(country);
-            _context.SaveChanges();
+            _country.AddCountry(country);
             return Ok("Add Country succesfully!");
         }
         
         [HttpGet("GetAllCountry")]
         public IActionResult Countries()
         {
-            return Ok(_context.Countries.ToList());
+            return Ok(_country.GetAllCountry());
         }
+
         [HttpPut("UpdateCountry/{id}")]
-        public IActionResult UpdateCountry(int id, Country updatedCountry)
+        public IActionResult UpdateCountry(Country updatedCountry)
         {
-            var country = _context.Countries.FirstOrDefault(c => c.Id == id);
-            if (country == null)
-            {
-                return NotFound("Country not found.");
-            }
-
-            country.Name = updatedCountry.Name;
-            _context.SaveChanges();
-
+            _country.UpdateCountry(updatedCountry);
             return Ok("Country updated successfully!");
         }
+
         [HttpDelete("DeleteCountry/{id}")]
         public IActionResult DeleteCountry(int id)
         {
-            var country = _context.Countries.FirstOrDefault(c => c.Id == id);
-            if (country == null)
-            {
-                return NotFound("Country not found.");
-            }
-
-            _context.Countries.Remove(country);
-            _context.SaveChanges();
-
+            _country.DeleteCountry(id);
             return Ok("Country deleted successfully!");
         }
 

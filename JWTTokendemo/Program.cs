@@ -1,4 +1,6 @@
 using JWTTokendemo.Data;
+using JWTTokendemo.Data.Interface;
+using JWTTokendemo.Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,7 +21,7 @@ builder.Services.AddCors(options =>
 
 
 
-
+builder.Services.AddScoped<ICountry, CountryRepository>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 //builder.Services.AddOpenApi();
