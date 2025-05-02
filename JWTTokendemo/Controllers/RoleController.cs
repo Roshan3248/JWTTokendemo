@@ -31,7 +31,7 @@ namespace JWTTokendemo.Controllers
             
         }
 
-        [HttpPut("UpdateRole")]
+        [HttpPut("UpdateRole/{id}")]
         public IActionResult UpdateRole(Role role)
         {
             try
@@ -46,7 +46,7 @@ namespace JWTTokendemo.Controllers
             }
 
         }
-        [HttpPut("DeleteRole")]
+        [HttpDelete("DeleteRole/{id}")]
         public IActionResult DeleteRole(int id)
         {
             try
