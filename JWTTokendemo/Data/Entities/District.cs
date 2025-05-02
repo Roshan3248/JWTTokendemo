@@ -9,9 +9,7 @@ namespace JWTTokendemo.Data.Entities
         public int CountryId { get; set; }
         public int StateId {  get; set; }
        
-        public State State { get; set; }
-        public Country Country { get; set; }
-        [Required]
+       [Required]
         [MaxLength(50)]
         public string Name { get; set; }
     }
