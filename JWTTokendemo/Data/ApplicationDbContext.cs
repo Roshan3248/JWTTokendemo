@@ -5,6 +5,9 @@ namespace JWTTokendemo.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        internal object standard;
+        internal object standards;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -17,8 +20,13 @@ namespace JWTTokendemo.Data
         public DbSet<State>States  { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<UserDetail> UserDetails { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
 
         public DbSet<TaskManager> TaskManagers { get; set; }
+        public DbSet<Standard> Standards { get; set; }
+
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Chapter> Chapters { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
