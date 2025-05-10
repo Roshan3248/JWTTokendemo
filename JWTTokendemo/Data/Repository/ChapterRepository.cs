@@ -32,6 +32,11 @@ namespace JWTTokendemo.Data.Repository
             return _context.Chapters.ToList();
         }
 
+        public List<Chapter> GetAllChapterbyStandardIdandSubjectId(int StandardId, int SubjectId)
+        {
+            return _context.Chapters.Where(x=>x.StandardId==StandardId && x.SubjectId==SubjectId).ToList();
+        }
+
         public bool UpdateChapter(Chapter chapter)
         {
             _context.Chapters.Update(chapter);

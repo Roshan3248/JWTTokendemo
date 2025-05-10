@@ -9,5 +9,6 @@ namespace JWTTokendemo.Data.Interface
         bool UpdateChapter(Chapter chapter);
         bool DeleteChapter(int id);
 
+        List<Chapter> GetAllChapterbyStandardIdandSubjectId(int StandardId, int SubjectId);
     }
 }

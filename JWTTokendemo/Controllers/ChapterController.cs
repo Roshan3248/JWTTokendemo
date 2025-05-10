@@ -43,6 +43,11 @@ namespace JWTTokendemo.Controllers
             _chapter.DeleteChapter(id);
             return Ok("Chapter deleted successfully!");
         }
+        [HttpGet("ChapterSidebar")]
+        public IActionResult ChapterSidebar(int StandardId, int SubjectId)
+        {
+            return Ok(_chapter.GetAllChapterbyStandardIdandSubjectId(StandardId, SubjectId));
+        }
 
     }
 
