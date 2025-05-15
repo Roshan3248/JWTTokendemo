@@ -1,6 +1,6 @@
 ﻿using JWTTokendemo.Data.Entities;
 using JWTTokendemo.Data.Interface;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTTokendemo.Controllers

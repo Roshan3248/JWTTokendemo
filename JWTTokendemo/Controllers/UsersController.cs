@@ -51,7 +51,7 @@ namespace JWTTokendemo.Controllers
             if (userRole == null)
                 return Ok(new { token = "", name = "", role = "", success = "401" });
 
-            var role = _context.Roles.Find(userRole.RoleId).Name;
+            var role = _context.Roles.Find(userRole.RoleId);
 
             
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
