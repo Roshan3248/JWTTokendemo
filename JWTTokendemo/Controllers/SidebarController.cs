@@ -27,7 +27,15 @@ namespace JWTTokendemo.Controllers
         [HttpGet("GetAllSidebar")]
         public IActionResult GetAllSidebar(int roleId)
         {
-            return Ok(_sidebar.GetAllSidebar(roleId));
+            if(roleId != 3)
+            {
+                return Ok(_sidebar.GetAllSidebar(roleId));
+            }
+            else
+            {
+                return Ok(new List<Sidebar>());
+            }
+
         }
 
         [HttpPut("UpdateSidebar/{id}")]
@@ -44,9 +52,9 @@ namespace JWTTokendemo.Controllers
             return Ok("Sidebar deleted successfully!");
         }
         [HttpGet("ChapterSidebar")]
-        public IActionResult ChapterSidebar(int StandardId, int SubjectId)
+        public IActionResult ChapterSidebar(int standardId, int subjectId)
         {
-            return Ok(_sidebar.GetAllSidebarbyStandardIdandSubjectId(StandardId, SubjectId));
+            return Ok(_sidebar.GetAllSidebarbyStandardIdandSubjectId(standardId, subjectId));
         }
 
     }
